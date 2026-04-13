@@ -414,4 +414,31 @@ function initScrollReveal() {
 	document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 }
 
-// Contact form is handled by Netlify (data-netlify on the form). Legacy client-side submission logic removed.
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1493143255750283344/1bfjd2Sww_EcnTBp0htfLnp8roVXm5W19Jux-sNclXdNswf9wuTDVfLhc2Q2SWWLPsl1";
+
+function formatForDiscord(data) {
+	let formatted = `>>> \n\n`;
+
+	for (const [key, value] of Object.entries(data)) {
+		formatted += `**${key.charAt(0).toUpperCase() + key.slice(1)}**\n\`\`\`${value}\`\`\``;
+	}
+
+	return formatted;
+}
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", e => {
+	e.preventDefault();
+
+	const data = new FormData(form);
+	const formatted = formatForDiscord(Object.fromEntries(data.entries()));
+
+	fetch(WEBHOOK_URL, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ content: formatted }),
+	});
+});
