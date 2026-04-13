@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio | spox</title>
+		<meta name="description" content="spox — Developer skilled at programming modular frameworks, features, and systems for roblox games." />
+		<meta property="og:title" content="Portfolio | spox" />
+		<meta property="og:description" content="Developer skilled at programming modular frameworks, features, and systems for roblox games." />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://images.pexels.com/photos/36571389/pexels-photo-36571389.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Portfolio | spox" />
+		<meta name="twitter:description" content="Developer skilled at programming modular frameworks, features, and systems for roblox games." />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+
+		<link rel="icon" href="styles/icon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="styles/styles.css" />
+	</head>
+	<body>
+		<!-- ── NAV PILL ── -->
+		<nav class="nav-pill" id="navPill">
+			<div class="nav-inner">
+				<span class="nav-logo">spox</span>
+				<div class="nav-links">
+					<a href="#projects" class="nav-link">Projects</a>
+					<a href="#about" class="nav-link">About</a>
+					<a href="#contact" class="nav-link active">Contact</a>
+				</div>
+				<button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span></button>
+			</div>
+			<div class="nav-mobile" id="navMobile">
+				<a href="#projects" class="nav-mobile-link">Projects</a>
+				<a href="#about" class="nav-mobile-link">About</a>
+				<a href="#contact" class="nav-mobile-link">Contact</a>
+			</div>
+		</nav>
+
+		<!-- ── HERO ── -->
+		<section class="hero" id="home">
+			<div class="hero-bg">
+				<img src="styles/hero-bg.webp" alt="Roblox baseplate background" loading="eager" />
+			</div>
+			<div class="hero-overlay"></div>
+			<div class="hero-content">
+				<p class="hero-eyebrow">Roblox Developer</p>
+				<h1 class="hero-name">spox</h1>
+				<p class="hero-desc">I specialize in creating unique and modular systems capable of being implemented into any Roblox game.</p>
+				<a href="#projects" class="hero-cta">
+					<span>See My Work</span>
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+				</a>
+			</div>
+			<div class="hero-scroll-hint">scroll</div>
+		</section>
+
+		<!-- ── PROJECTS ── -->
+		<section class="projects" id="projects">
+			<div class="container">
+				<div class="section-header reveal">
+					<h2 class="section-title">Projects</h2>
+					<p class="section-sub">Previews of my projects</p>
+				</div>
+
+				<div class="projects-grid" id="projectsGrid">
+					<!-- Projects will be populated dynamically from content/projects.json -->
+				</div>
+			</div>
+		</section>
+
+		<!-- ── PLUGINS & TOOLS ── -->
+		<section class="projects" id="tools">
+			<div class="container">
+				<div class="section-header reveal">
+					<h2 class="section-title">Developer Tools</h2>
+					<p class="section-sub">Developer tools I have made mainly for personal use, very non polished and not entirely intended for public release</p>
+				</div>
+
+				<div class="projects-grid" id="devtoolsGrid">
+					<!-- Developer plugins and tools will be populated dynamically from content/devtools.json -->
+				</div>
+			</div>
+		</section>
+
+		<!-- ── ABOUT ── -->
+		<section class="about" id="about">
+			<div class="container about-inner">
+				<div class="about-text reveal">
+					<h2 class="section-title">About</h2>
+					<p>I'm an 18 year old student with 4 years of programming experience throughought highschool. I'm usually working on random side projects where I've been able to learn many different skills. Through this I've been able to work with others, implementing features in games and creating my own tools along the way. My main skills are being able to replicate systems or implement unique ideas and combine this with functional UI programming.</p>
+					<div class="skills-row">
+						<span class="skill-pill">Feature Scripting</span>
+						<span class="skill-pill">UI Programming - not design</span>
+					</div>
+				</div>
+				<div class="about-stat-col">
+					<div class="stat-card reveal">
+						<span class="stat-num">4 years</span>
+						<span class="stat-label">Programming experience</span>
+					</div>
+					<div class="stat-card reveal reveal-delay-1">
+						<span class="stat-num">too many</span>
+						<span class="stat-label">Side projects</span>
+					</div>
+					<div class="stat-card reveal reveal-delay-2">
+						<span class="stat-num">5</span>
+						<span class="stat-label">Completed Commissions</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ── CONTACT ── -->
+		<section class="contact" id="contact">
+			<div class="container contact-inner">
+				<div class="contact-left reveal">
+					<h2 class="section-title">Get in Touch</h2>
+					<p>Have a great idea but not sure how to bring it to life? Contact me here with any of these methods and I'll get back to you as soon as possible.</p>
+					<div class="contact-details">
+						<div class="contact-detail">
+							<span class="contact-label">Discord</span>
+							<a href="https://discordapp.com/users/699460165707235338" target="_blank" rel="noopener noreferrer" class="contact-value">@spoxle</a>
+						</div>
+						<div class="contact-detail">
+							<span class="contact-label">Roblox</span>
+							<a href="https://www.roblox.com/users/683981346/profile" target="_blank" rel="noopener noreferrer" class="contact-value">spox (@ooi_e)</a>
+						</div>
+						<div class="contact-detail">
+							<span class="contact-label">Github</span>
+							<a href="https://github.com/spoxle" target="_blank" rel="noopener noreferrer" class="contact-value">spoxle</a>
+						</div>
+					</div>
+				</div>
+				<div class="contact-right reveal reveal-delay-1">
+					<form id="contactForm" name="Contact" method="POST" data-netlify="true">
+						<input type="hidden" name="form-name" value="Contact" />
+						<div class="form-row">
+							<div class="form-group">
+								<label for="name">Name</label>
+								<input type="text" id="name" name="name" placeholder="Your name or username" />
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" id="email" name="email" placeholder="your@email.com" required="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="subject">Subject</label>
+							<input type="text" id="subject" name="subject" placeholder="Short description of project, idea, or request" />
+						</div>
+						<div class="form-group">
+							<label for="message">Message</label>
+							<textarea id="message" name="message" rows="5" placeholder="Start with any additional details or contact information for how you would like to communicate: discord, email, roblox, then describe your project and ideas in as much detail as you'd like" required=""></textarea>
+						</div>
+						<button type="submit" class="form-submit">Send Message</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<!-- ── FOOTER ── -->
+		<footer class="footer">
+			<div class="container footer-inner">
+				<span class="footer-logo">spox</span>
+				<p class="footer-copy">© <span class="copyright-year">2026</span> spox. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>

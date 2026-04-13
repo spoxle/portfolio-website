@@ -1,0 +1,8 @@
+[
+	{
+		"name": "Camlock",
+		"description": "Very lighweight plugin with just a toolbar button to set the camera cframe to a selected viewmodel containing a part with a StringValue named 'Camera' inside",
+		"link": "https://create.roblox.com/store/asset/135649239598036/Camlock",
+		"tags": ["Studio", "Plugin", "Productivity"]
+	}
+]
