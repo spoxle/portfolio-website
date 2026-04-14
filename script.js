@@ -1,15 +1,5 @@
-/* Clean refactor backup for script.js */
-
-/* This file is a temporary clean copy. The final script.js will be overwritten with this content. */
-
-/* ─────────────────────────────────────────────────────────
-   Main site script (clean refactor)
-───────────────────────────────────────────────────────── */
-
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll(".copyright-year").forEach(el => (el.textContent = new Date().getFullYear()));
-
-	// Netlify will handle form submissions — legacy client-side form logic removed
 
 	initNav();
 	Promise.all([loadProjects(), loadDevTools()]).then(() => {
@@ -442,3 +432,8 @@ form.addEventListener("submit", e => {
 		body: JSON.stringify({ content: formatted }),
 	});
 });
+
+fetch("https://thumbnails.roblox.com/v1/assets?assetIds=135649239598036&returnPolicy=PlaceHolder&size=512x512&format=Webp&isCircular=false")
+	.then(res => res.json())
+	.then(data => console.log(data))
+	.catch(err => console.error("Failed to fetch thumbnail:", err));
