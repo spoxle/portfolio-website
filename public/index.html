@@ -7,14 +7,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Portfolio | spox</title>
 
+		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
 
 		<link rel="icon" href="content/icon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="styles/styles.css" />
+
+		<script src="src/index.js" type="module"></script>
 	</head>
 	<body>
-		<p>boing boing boing</p>
+		<section id="home" class="hero">
+			<div class="hero-info">
+				<p class="hero-eyebrow">ROBLOX DEVELOPER</p>
+				<h1 class="hero-header">spoxle</h1>
+				<p class="hero-subtitle">4 Years of experience building unique modular systems and frameworks</p>
+			</div>
+			<model-viewer class="hero-model" src="content/spawn_location.roblox.glb" toneMapping="ACES"></model-viewer>
+			<p class="hero-tip">SCROLL</p>
+		</section>
+		<section id="projects">
+			<h1 class="section-header reveal">Roblox Projects</h1>
+			<h2 class="section-subheader reveal">Previews of my roblox projects</h2>
+			<div id="projects-container"></div>
+		</section>
 	</body>
 </html>
