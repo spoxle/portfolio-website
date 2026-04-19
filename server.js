@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const zlib = require("zlib");
 const fs = require("fs");
 
 // express server
