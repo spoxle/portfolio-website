@@ -115,7 +115,7 @@ app.get("/projects", async (req, res) => {
 					if (details[index].copyable) {
 						links.push({
 							name: experience.name,
-							url: "N/A", // need to get actual download contents for this, data.location is gzipped
+							url: "N/A", // need to get actual download contents for this, data.location is gzipd
 							download: true,
 						});
 					}
