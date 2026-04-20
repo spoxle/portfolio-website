@@ -16,7 +16,7 @@
 		<link rel="icon" href="content/icon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="styles/styles.css" />
 
-		<script src="src/index.js" type="module"></script>
+		<script src="src/index.js" type="module" defer></script>
 	</head>
 	<body>
 		<section id="home" class="hero">
@@ -25,12 +25,10 @@
 				<h1 class="hero-header">spoxle</h1>
 				<p class="hero-subtitle">4 Years of experience building unique modular systems and frameworks</p>
 			</div>
-			<model-viewer class="hero-model" src="content/spawn_location.roblox.glb" toneMapping="ACES"></model-viewer>
-			<p class="hero-tip">SCROLL</p>
+			<model-viewer class="hero-model" src="content/model.glb" poster="content/model-placeholder.webp" tone-mapping="neutral" loading="eager"></model-viewer>
+			<p id="scroll-tip">SCROLL</p>
 		</section>
 		<section id="projects">
-			<h1 class="section-header reveal">Roblox Projects</h1>
-			<h2 class="section-subheader reveal">Previews of my roblox projects</h2>
 			<div id="projects-container"></div>
 		</section>
 	</body>

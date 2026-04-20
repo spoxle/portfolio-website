@@ -1,6 +1,6 @@
-import { initRobloxProjects } from "./projects.js";
-import { initScroll } from "./scroll.js";
+import { initProjects } from "./projects.js";
+import { initEffects } from "./effects.js";
+import { initModel } from "./model.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-	initRobloxProjects().then(initScroll);
-});
+initModel();
+initProjects().then(initEffects);

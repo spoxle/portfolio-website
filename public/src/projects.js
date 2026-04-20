@@ -1,50 +1,49 @@
 const projectsContainer = document.getElementById("projects-container");
 
-function updateFadeDelays() {
-	const styles = window.getComputedStyle(projectsContainer);
-	const columnTracks = styles.getPropertyValue("grid-template-columns");
-	const columnCount = columnTracks.split(" ").filter(v => v !== "").length;
+function createProjectSection(header, subtitle) {
+	const projectSection = document.createElement("div");
+	projectSection.classList = "project-section reveal";
+	projectSection.innerHTML = `
+		<h1 class="section-header">${header}</h1>
+		<h2 class="section-subheader">${subtitle}</h2>
+	`;
+	projectsContainer.appendChild(projectSection);
+}
 
-	Array.from(projectsContainer.children).forEach((child, i) => {
-		const delay = (i % columnCount) / 10;
-		child.style.transitionDelay = `${delay}s`;
+// roblox projects
+
+async function initRobloxProjects(config) {
+	createProjectSection(config.header, config.subtitle);
+
+	const ids = config.projects.map(project => project.id);
+	const data = await fetch("/roblox/details?ids=" + ids.join(",")).then(response => response.json());
+
+	config.projects.forEach((project, i) => {
+		const detail = data.details[i];
+		const thumbnail = data.thumbnails[i];
+
+		console.log(detail);
+
+		const projectElement = document.createElement("div");
+		projectElement.classList = "project reveal";
+		projectElement.innerHTML = `
+			<img class="project-thumbnail" src="${thumbnail}">
+			<div class="project-info">
+				<h2 class="project-name">${detail.name}</h2>
+				<p class="project-description">${detail.description || "No description available"}</p>
+				<div class="project-links">
+					<a class="project-link" href="https://roblox.com${detail.canonicalUrlPath}" target="_blank">View on Roblox</a>
+				</div>
+			</div>
+		`;
+		projectsContainer.appendChild(projectElement);
 	});
 }
 
-export async function initRobloxProjects() {
-	window.addEventListener("resize", updateFadeDelays);
+// init all projects
 
-	return fetch("/projects?type=roblox")
-		.then(res => res.json())
-		.then(projects => {
-			projects.forEach((project, i) => {
-				const projectElement = document.createElement("div");
-				projectElement.className = `project reveal`;
-				projectElement.innerHTML = `
-					<img class="project-thumbnail" src="${project.thumbnail}" alt="${project.name}" />
-					<div class="project-info">
-						<h2 class="project-name">${project.name}</h2>
-						<p class="project-description">${project.description || "No description available"}</p>
-						<p class="project-date">${new Date(project.created).toLocaleDateString()}</p>
-						<div class="project-links">
-							${project.links
-								.map(link => {
-									return `<a
-										class="project-link"
-										href="${link.url}"
-										${link.download ? `download=${link.filename}.rbxl` : 'target="_blank"'}
-									>
-										${link.download ? "Download - Not yet" : "View on Roblox"}
-									</a>`;
-								})
-								.join("\n")}
-						</div>
-					</div>
-				`;
-				projectsContainer.appendChild(projectElement);
-			});
+export async function initProjects() {
+	const config = await fetch("../projects/config.json").then(response => response.json());
 
-			return projects;
-		})
-		.then(updateFadeDelays);
+	await initRobloxProjects(config.roblox);
 }
