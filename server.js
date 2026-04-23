@@ -1,6 +1,5 @@
 const { Readable } = require("node:stream");
 const express = require("express");
-const yauzl = require("yauzl");
 const path = require("path");
 
 // express server
