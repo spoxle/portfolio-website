@@ -26,10 +26,17 @@
 				<p class="hero-subtitle">4 Years of experience building unique modular systems and frameworks</p>
 			</div>
 			<model-viewer class="hero-model" src="content/model.glb" poster="content/model-placeholder.png" tone-mapping="neutral" loading="eager"> </model-viewer>
-			<p id="scroll-tip">SCROLL</p>
+			<p id="scroll-tip">SCROLL ↓</p>
 		</section>
 		<section id="projects">
-			<div id="projects-container"></div>
+			<div id="projects-container">Loading Projects JSON...</div>
 		</section>
+		<dialog id="modal">
+			<div id="modal-content">
+				<video id="modal-video" controls>
+					<source src="" type="video/webm" />
+				</video>
+			</div>
+		</dialog>
 	</body>
 </html>

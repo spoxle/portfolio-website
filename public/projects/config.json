@@ -2,22 +2,6 @@
 	"roblox": {
 		"header": "Roblox Projects",
 		"subtitle": "Previews of my roblox projects, frameworks, and modules",
-		"projects": [
-			{
-				"id": 5950225780
-			},
-			{
-				"id": 5602209089
-			},
-			{
-				"id": 9980615055
-			},
-			{
-				"id": 5327557585
-			},
-			{
-				"id": 6335753444
-			}
-		]
+		"projects": [5950225780, 5602209089, 9980615055, 5327557585, 6335753444]
 	}
 }

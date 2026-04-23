@@ -1,7 +1,5 @@
-const projectContainer = document.getElementById("projects-container");
-
 function updateProjectFadeDelays() {
-	const projects = Array.from(projectContainer.querySelectorAll(".project"));
+	const projects = Array.from(document.querySelectorAll(".project"));
 
 	const firstTop = projects[0].offsetTop;
 	const columnCount = projects.filter(p => p.offsetTop === firstTop).length;
@@ -22,11 +20,48 @@ function updateScrollTip() {
 	}
 }
 
+function initMedia() {
+	const medias = Array.from(document.querySelectorAll(".project-media"));
+	const modal = document.getElementById("modal");
+	const modalVideo = document.getElementById("modal-video");
+
+	modal.addEventListener("click", () => {
+		modal.close();
+	});
+
+	medias.forEach(media => {
+		const video = media.querySelector(".project-video");
+
+		video.addEventListener("load", () => {
+			console.log("loaded");
+		});
+
+		media.addEventListener("click", () => {
+			modal.showModal();
+			modalVideo.querySelector("source").src = video.querySelector("source").src;
+			modalVideo.load();
+			modalVideo.play();
+			modalVideo.currentTime = video.currentTime;
+		});
+
+		media.addEventListener("mouseenter", () => {
+			video.play();
+		});
+
+		media.addEventListener("mouseleave", () => {
+			video.pause();
+			video.currentTime = 0;
+		});
+	});
+}
+
 export function initEffects() {
 	window.addEventListener("resize", updateProjectFadeDelays);
 	window.addEventListener("scroll", updateScrollTip);
 	updateProjectFadeDelays();
 	updateScrollTip();
+
+	initMedia();
 
 	const observer = new IntersectionObserver(
 		entries => {
