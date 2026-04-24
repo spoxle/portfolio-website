@@ -1,28 +1,28 @@
-# Stage 1: Build
-FROM node:20-slim AS builder
+# Stage 1: Build/Install
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 
-# Copy only package files first to leverage Docker layer caching
+# Copy only files needed for installing dependencies
 COPY package*.json ./
-RUN npm install
 
-# Copy the rest of your code and build (if applicable)
-COPY . .
-# Uncomment the line below if you use TypeScript or a build step
-# RUN npm run build
+# Install dependencies (use --production for a smaller footprint)
+RUN npm ci --omit=dev
 
-# Stage 2: Run
+# Stage 2: Production
 FROM node:20-slim
 WORKDIR /app
 
-# Copy only the necessary production files from the builder stage
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app ./
+# Copy the installed node_modules and your application code
+COPY --from=base /app/node_modules ./node_modules
+COPY . .
 
-# Use a non-root user for better security
-USER node
+# Prune folders you don't need in production
+RUN rm -rf .vscode
 
+# Set environment and expose port
+ENV NODE_ENV=production
 EXPOSE 3000
 
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
