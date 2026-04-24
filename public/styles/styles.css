@@ -4,11 +4,59 @@
 	box-sizing: border-box;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background-color: #000;
 	overscroll-behavior-y: none;
 	color: #fff;
 	font-family: "Space Grotesk";
+}
+
+/* navigation */
+
+nav {
+	position: fixed;
+	top: 12px;
+	left: 50%;
+	translate: -50% 0;
+	padding: 10px;
+	border-radius: 100px;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	z-index: 2;
+}
+
+#nav-indicator {
+	position: absolute;
+	background-color: #fff;
+	top: 10px;
+	bottom: 10px;
+	left: 0;
+	border-radius: 100px;
+	transform-origin: center;
+	will-change: transform, width;
+	transition:
+		transform 0.5s ease,
+		width 0.5s ease;
+	z-index: 3;
+}
+
+.nav-link {
+	padding: 6px 12px;
+	border-radius: 100px;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+	text-decoration: none;
+	color: #777;
+	z-index: 4;
 }
 
 /* hero */
@@ -25,29 +73,29 @@ body {
 	border: none !important;
 }
 
-.hero-info {
+#hero-info {
 	max-width: 400px;
 }
 
-.hero-eyebrow {
+#hero-eyebrow {
 	color: rgb(255, 100, 0);
 	font-size: 0.875rem;
 	margin-bottom: 10px;
 	font-family: "Inter";
 }
 
-.hero-header {
+#hero-header {
 	font-size: 5rem;
 }
 
-.hero-subtitle {
+#hero-subtitle {
 	font-size: 1rem;
 	color: #999;
 	margin-top: 15px;
 	font-family: "Inter";
 }
 
-.hero-model {
+#hero-model {
 	width: 40vmax;
 	height: 40vmax;
 }
@@ -155,7 +203,7 @@ section {
 }
 
 .project-link {
-	border-radius: 100vmax;
+	border-radius: 100px;
 	padding: 10px 14px;
 	text-decoration: none;
 	border: 1px solid #333;
@@ -203,7 +251,7 @@ dialog::backdrop {
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	border-radius: 12px;
-	box-shadow: 0 0 0 2px white;
+	border: 2px solid #555 q;
 }
 
 /* scroll reveal */

@@ -19,17 +19,33 @@
 		<script src="src/index.js" type="module" defer></script>
 	</head>
 	<body>
+		<nav>
+			<div id="nav-indicator"></div>
+
+			<a class="nav-link selected" href="#home">home</a>
+			<a class="nav-link" href="#projects">projects</a>
+			<a class="nav-link" href="#about">about</a>
+			<a class="nav-link" href="#contact">contact</a>
+		</nav>
 		<section id="home" class="hero">
-			<div class="hero-info">
-				<p class="hero-eyebrow">ROBLOX DEVELOPER</p>
-				<h1 class="hero-header">spoxle</h1>
-				<p class="hero-subtitle">4 Years of experience building unique modular systems and frameworks</p>
+			<div id="hero-info">
+				<p id="hero-eyebrow">ROBLOX DEVELOPER</p>
+				<h1 id="hero-header">spoxle</h1>
+				<p id="hero-subtitle">4 years of programming experience, skilled in making tailored and modular frameworks, systems, or features</p>
 			</div>
-			<model-viewer class="hero-model" src="content/model.glb" poster="content/model-placeholder.png" tone-mapping="neutral" loading="eager"> </model-viewer>
+			<model-viewer id="hero-model" src="content/model.glb" poster="content/model-placeholder.png" tone-mapping="neutral" loading="eager" auto-rotate> </model-viewer>
 			<p id="scroll-tip">SCROLL ↓</p>
 		</section>
 		<section id="projects">
 			<div id="projects-container">Loading Projects JSON...</div>
+		</section>
+		<section id="about">
+			<h2 class="section-header reveal">About</h2>
+			<h3 class="section-subheader" reveal>A little bit about me</h3>
+		</section>
+		<section id="contact">
+			<h2 class="section-header reveal">Contact</h2>
+			<h3 class="section-subheader reveal">Some ways to get in contact</h3>
 		</section>
 		<dialog id="modal">
 			<div id="modal-content">

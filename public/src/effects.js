@@ -55,12 +55,48 @@ function initMedia() {
 	});
 }
 
+const indicator = document.getElementById("nav-indicator");
+const nav = document.querySelector("nav");
+
+function moveIndicator(link) {
+	const navRect = nav.getBoundingClientRect();
+	const rect = link.getBoundingClientRect();
+	const linkCenter = rect.left - navRect.left + rect.width / 2;
+
+	indicator.style.width = `${rect.width}px`;
+	indicator.style.transform = `translateX(${linkCenter}px) translateX(-50%)`;
+}
+
+moveIndicator(document.querySelector(".nav-link.selected"));
+
+function initNav() {
+	const sections = document.querySelectorAll("section");
+
+	const observer = new IntersectionObserver(
+		entries => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) {
+					const id = entry.target.id;
+					const target = document.querySelector(`.nav-link[href="#${id}"]`);
+
+					history.replaceState(null, null, `#${id}`);
+					moveIndicator(target);
+				}
+			}
+		},
+		{ threshold: 0.5 },
+	);
+
+	sections.forEach(section => observer.observe(section));
+}
+
 export function initEffects() {
 	window.addEventListener("resize", updateProjectFadeDelays);
 	window.addEventListener("scroll", updateScrollTip);
 	updateProjectFadeDelays();
 	updateScrollTip();
 
+	initNav();
 	initMedia();
 
 	const observer = new IntersectionObserver(

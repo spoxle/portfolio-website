@@ -44,8 +44,8 @@ async function initRobloxProjects(config) {
 	}
 
 	section.innerHTML = `
-		<h1 class="section-header">${config.header}</h1>
-		<h2 class="section-subheader">${config.subtitle}</h2>
+		<h2 class="section-header reveal">${config.header}</h2>
+		<h3 class="section-subheader reveal">${config.subtitle}</h3>
 	`;
 }
 
