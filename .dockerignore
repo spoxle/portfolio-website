@@ -1,5 +1,4 @@
 node_modules
 .vscode
 .git
-.env
-npm-debug.log
+.gitignore
