@@ -39,7 +39,7 @@ async function initRobloxProjects(config) {
 				<div class="card-thumbnail">
 					<img src="${thumbnail}" alt="Project Thumbnail" class="thumb-img" />
 					<video class="thumb-video" loop="" muted="muted" playsinline="">
-						<source src="../projects/roblox/${detail.name}.webm" type="video/webm" />
+						<source src="./projects/roblox/${detail.name}.webm" type="video/webm" />
 					</video>
 				</div>
 			</div>

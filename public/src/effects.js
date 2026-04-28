@@ -7,7 +7,7 @@ export function initEffects() {
 		tag.innerText = `0${i + 1}`;
 	});
 
-	// updaate nav bar on scroll
+	// update nav bar on scroll
 
 	const sections = document.querySelectorAll("section[id], div[id]");
 	const navLinks = document.querySelectorAll(".nav-link");
@@ -103,9 +103,9 @@ export function initEffects() {
 		modalNext.disabled = index === projectData.length - 1;
 
 		if (p.hasVideo && p.videoSrc) {
-			modalVideoSource.src = p.videoSrc;
+			modalVideo.src = p.videoSrc;
 			modalVideo.load();
-			modalVideo.play().catch(() => {});
+			modalVideo.play();
 			modalVideo.style.display = "block";
 			modalNoVideo.classList.remove("show");
 		} else {
