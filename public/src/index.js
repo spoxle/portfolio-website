@@ -11,7 +11,7 @@ const form = document.getElementById("contactForm");
 form.addEventListener("submit", async event => {
 	event.preventDefault();
 
-	const data = new FormData(form);
+	const data = Object.fromEntries(new FormData(form));
 
 	const response = await fetch("/send", {
 		method: "POST",
