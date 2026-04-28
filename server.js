@@ -34,7 +34,7 @@ app.post("/send", (req, res) => {
 
 	const mailOptions = {
 		from: email,
-		to: "me@spoxle.com",
+		to: process.env.NODEMAILER_EMAIL,
 		subject: `PORTFOLIO CONTACT: ${name} — ${subject}`,
 		text: message,
 	};
