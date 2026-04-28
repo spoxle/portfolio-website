@@ -757,6 +757,18 @@ button {
 	margin-top: 4px;
 }
 
+/* testimonials */
+
+.testimonail-media {
+	display: flex;
+	gap: 16px;
+}
+
+.testimonail-media img {
+	aspect-ratio: 1;
+	object-fit: contain;
+}
+
 /* ===========================
    FOOTER
 =========================== */
