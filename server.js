@@ -1,22 +1,55 @@
-const { Readable } = require("node:stream");
+const nodemailer = require("nodemailer");
 const express = require("express");
 const path = require("path");
+
+const { Readable } = require("stream");
+require("dotenv").config();
 
 // express server
 
 const app = express();
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = process.env.PORT || 8080;
-// TODO: fix coolify not sending env variables
+const PORT = process.env.PORT;
 
-app.listen(PORT, "0.0.0.0", () => {
-	console.log(`http://localhost:${PORT}`);
+const server = app.listen(PORT, "0.0.0.0", () => {
+	console.log(`express app now running on http://localhost:${PORT}`);
+});
+
+// email
+
+const transporter = nodemailer.createTransport({
+	service: "gmail",
+	auth: {
+		user: process.env.NODEMAILER_EMAIL,
+		pass: process.env.NODEMAILER_PASSWORD,
+	},
+});
+
+app.post("/send", (req, res) => {
+	const { name, email, subject, message } = req.body;
+
+	console.log(req);
+
+	const mailOptions = {
+		from: email,
+		to: "me@spoxle.com",
+		subject: `PORTFOLIO CONTACT: ${name} — ${subject}`,
+		text: message,
+	};
+
+	transporter.sendMail(mailOptions, (error, info) => {
+		if (error) {
+			console.log(error);
+			res.sendStatus(500);
+		} else {
+			res.sendStatus(200);
+		}
+	});
 });
 
 // roblox api endpoints
-
-const API_KEY = "NakL806c9EaGU8TtEWFntp+cM8KH7wbo47qgko0wWtSNKkM8ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNkluTnBaeTB5TURJeExUQTNMVEV6VkRFNE9qVXhPalE1V2lJc0luUjVjQ0k2SWtwWFZDSjkuZXlKaGRXUWlPaUpTYjJKc2IzaEpiblJsY201aGJDSXNJbWx6Y3lJNklrTnNiM1ZrUVhWMGFHVnVkR2xqWVhScGIyNVRaWEoyYVdObElpd2lZbUZ6WlVGd2FVdGxlU0k2SWs1aGEwdzRNRFpqT1VWaFIxVTRWSFJGVjBadWRIQXJZMDA0UzBnM2QySnZORGR4WjJ0dk1IZFhkRk5PUzJ0Tk9DSXNJbTkzYm1WeVNXUWlPaUkyT0RNNU9ERXpORFlpTENKbGVIQWlPakUzTnpZM01UVTJNemtzSW1saGRDSTZNVGMzTmpjeE1qQXpPU3dpYm1KbUlqb3hOemMyTnpFeU1ETTVmUS5rQUU0WWw2UThzQV9zVWtHaXYxcUpwSHZURXVCdnd1eUVrZ1BROUxab3VQbFB4NER4anl4a3hld0V1LWFocnZiX1R4WmpXazlfempiZU94OVA3UW4tYk5nX3NiWTJITmxjaDlGeFMtLWtMRm1CVDdTMXY3M051RjQ3dWYxTjhiUFR5WDZsZjJubl9senlJd3A3VFdYdkJqUjR4Rm14aDZseHVOOXo2eGp0X1Bod2JkdW9Kb2huaGZaTTlxaHlZNUM0b1M3TFJYSlRkTEg0TUdhbi1RRThwaUdodVg0akRuVmFfVkxuRTRuUldoZWRBUkl4VG9OX2NyQjk3QU5xeENDNHczUm9sWl81WG43UnY2VTB1WXpOTURxTFhJaXhZbVowVGtuYTY5Y0RlLUtPeTdQeU8zdFdlcEozWEMyRkdKb2FYSkoxM2JadThMZEFrbTBYeUdBZGc=";
 
 const DETAILS_API = "https://games.roblox.com/v1/games?universeIds=";
 const THUMBNAILS_API = "https://thumbnails.roblox.com/v1/games/multiget/thumbnails?format=Webp&size=768x432&universeIds=";
@@ -47,13 +80,18 @@ app.get("/roblox/info", async (req, res) => {
 		details.map(async experience => {
 			return fetch(ASSETS_API + experience.rootPlaceId, {
 				headers: {
-					"x-api-key": API_KEY,
+					"x-api-key": process.env.ROBLOX_API_KEY,
 				},
 			})
 				.then(response => response.json())
 				.then(data => data.location);
+			``;
 		}),
 	);
 
-	res.json({ details, thumbnails, cdns });
+	res.json({
+		details,
+		thumbnails,
+		cdns,
+	});
 });

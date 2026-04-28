@@ -5,54 +5,229 @@
 
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Portfolio | spoxle</title>
+		<title>spoxle | Portfolio</title>
+		<meta name="description" content="spoxle — Portfolio specializing in immersive games, studio tools, and creative systems. Explore projects and get in touch." />
+		<meta property="og:title" content="spoxle | Portfolio" />
+		<meta property="og:description" content="Roblox developer specializing in immersive games, studio tools, and creative systems." />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="public/content/icon.ico" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="spoxle | Portfolio" />
+		<meta name="twitter:description" content="Developer specializing in immersive games, studio tools, and creative systems." />
+		<meta name="twitter:image" content="public/content/icon.ico" />
 
-		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js" defer></script>
+		<script type="module" src="src/index.js" script defer></script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
 
-		<link rel="icon" href="content/icon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="styles/styles.css" />
-
-		<script src="src/index.js" type="module" defer></script>
 	</head>
 	<body>
-		<nav>
-			<div id="nav-indicator"></div>
-
-			<a class="nav-link selected" href="#home">home</a>
-			<a class="nav-link" href="#projects">projects</a>
-			<a class="nav-link" href="#about">about</a>
-			<a class="nav-link" href="#contact">contact</a>
+		<!-- NAV PILL -->
+		<nav class="nav-pill" id="navPill">
+			<a href="#projects" class="nav-link">projects</a>
+			<span class="nav-divider"></span>
+			<a href="#about" class="nav-link">about</a>
+			<span class="nav-divider"></span>
+			<a href="#contact" class="nav-link">contact</a>
 		</nav>
-		<section id="home" class="hero">
-			<div id="hero-info">
-				<p id="hero-eyebrow">ROBLOX DEVELOPER</p>
-				<h1 id="hero-header">spoxle</h1>
-				<p id="hero-subtitle">4 years of programming experience, skilled in making tailored and modular frameworks, systems, or features</p>
+
+		<!-- HERO -->
+		<section class="hero" id="home">
+			<div class="hero-inner">
+				<div class="hero-text fade-in visible">
+					<span class="eyebrow">Developer - Scripting</span>
+					<h1 class="hero-name">spoxle</h1>
+					<p class="hero-subtitle">4 years of programming experience, skilled in making uniquely tailored systems, frameworks, and features</p>
+					<div class="hero-cta">
+						<a href="#projects" class="btn-primary">View Projects</a>
+						<a href="#contact" class="btn-ghost">Get in Touch</a>
+					</div>
+				</div>
+				<model-viewer class="hero-model" src="content/model.glb" poster="content/model-placeholder.png" tone-mapping="neutral" loading="eager"></model-viewer>
 			</div>
-			<model-viewer id="hero-model" src="content/model.glb" poster="content/model-placeholder.png" tone-mapping="neutral" loading="eager" auto-rotate> </model-viewer>
-			<p id="scroll-tip">SCROLL ↓</p>
-		</section>
-		<section id="projects">
-			<div id="projects-container">Loading Projects JSON...</div>
-		</section>
-		<section id="about">
-			<h2 class="section-header reveal">About</h2>
-			<h3 class="section-subheader" reveal>A little bit about me</h3>
-		</section>
-		<section id="contact">
-			<h2 class="section-header reveal">Contact</h2>
-			<h3 class="section-subheader reveal">Some ways to get in contact</h3>
-		</section>
-		<dialog id="modal">
-			<div id="modal-content">
-				<video id="modal-video" controls>
-					<source src="" type="video/webm" />
-				</video>
+			<div class="hero-scroll-hint">
+				<span>Scroll</span>
+				<div class="scroll-line"></div>
 			</div>
-		</dialog>
+		</section>
+
+		<!-- PROJECTS -->
+		<section class="section" id="projects">
+			<div class="container"></div>
+		</section>
+
+		<!-- ABOUT -->
+		<section class="section section-about" id="about">
+			<div class="container">
+				<div class="about-grid">
+					<div class="about-left fade-in visible">
+						<span class="section-tag">00</span>
+						<h2 class="section-title">About Me</h2>
+						<h3 class="about-name">spoxle</h3>
+						<p class="about-bio">I'm an 18 year old student always working on another random project. I have experience with Roblox Studio, Web Development, and Networking. From all of these I've been able to learn many different skills, but need an outlet to put them to use. I usually find myself with very detailed frameworks, modules, or features, but no full project to apply them to. With this portfolio I hope to put my skills to use by contributing to your unique project.</p>
+						<div class="about-skills">Loading...</div>
+					</div>
+					<div class="about-right fade-in fade-in-delay visible">
+						<div class="stat-card">
+							<span class="stat-number coding-year">Loading... years</span>
+							<span class="stat-label">Programming Experience</span>
+						</div>
+						<div class="stat-card">
+							<span class="stat-number github-repos">Loading...+</span>
+							<span class="stat-label">Personal Github Projects</span>
+						</div>
+						<div class="stat-card">
+							<span class="stat-number">7</span>
+							<span class="stat-label">Completed Commisions</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CONTACT -->
+		<section class="section section-contact" id="contact">
+			<div class="container">
+				<div class="section-header fade-in visible">
+					<span class="section-tag">00</span>
+					<h2 class="section-title">Contact</h2>
+				</div>
+				<div class="contact-grid">
+					<div class="contact-left fade-in visible">
+						<p class="contact-intro">Open to commissions, collaborations, and unique projects. Reach out through any of the methods given.</p>
+						<div class="contact-links">
+							<a href="https://www.roblox.com/users/683981346/profile" target="_blank" rel="noopener" class="contact-social-link">
+								<div class="social-icon">
+									<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+										<title>Roblox</title>
+										<path d="M18.926 23.998 0 18.892 5.075.002 24 5.108ZM15.348 10.09l-5.282-1.453-1.414 5.273 5.282 1.453z" />
+									</svg>
+								</div>
+								<div class="social-info">
+									<span class="social-name">Roblox Profile</span>
+									<span class="social-handle">spoxle @ooi_e</span>
+								</div>
+								<svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<line x1="7" y1="17" x2="17" y2="7"></line>
+									<polyline points="7 7 17 7 17 17"></polyline>
+								</svg>
+							</a>
+							<a href="https://discord.com/users/699460165707235338/" target="_blank" rel="noopener" class="contact-social-link">
+								<div class="social-icon">
+									<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+										<title>Discord</title>
+										<path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
+									</svg>
+								</div>
+								<div class="social-info">
+									<span class="social-name">Discord Profile</span>
+									<span class="social-handle">spox @spoxle</span>
+								</div>
+								<svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<line x1="7" y1="17" x2="17" y2="7"></line>
+									<polyline points="7 7 17 7 17 17"></polyline>
+								</svg>
+							</a>
+							<a href="" target="_blank" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=me@spoxle.com')" rel="noopener" class="contact-social-link">
+								<div class="social-icon">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+										<title>email</title>
+										<path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+									</svg>
+								</div>
+								<div class="social-info">
+									<span class="social-name">Email Link</span>
+									<span class="social-handle">me@spoxle.com</span>
+								</div>
+								<svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<line x1="7" y1="17" x2="17" y2="7"></line>
+									<polyline points="7 7 17 7 17 17"></polyline>
+								</svg>
+							</a>
+							<!--<a href="https://x.com/spoxle" target="_blank" rel="noopener" class="contact-social-link">
+								<div class="social-icon">
+									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+								</div>
+								<div class="social-info">
+									<span class="social-name">X / Twitter</span>
+									<span class="social-handle">@spoxle</span>
+								</div>
+								<svg class="social-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<line x1="7" y1="17" x2="17" y2="7"></line>
+									<polyline points="7 7 17 7 17 17"></polyline>
+								</svg>
+							</a>-->
+						</div>
+					</div>
+					<div class="contact-right fade-in fade-in-delay visible">
+						<form id="contactForm">
+							<div class="form-columns">
+								<div class="form-group">
+									<label for="name">your name or username</label>
+									<input type="text" id="name" name="name" placeholder="Name or Username" required="" />
+								</div>
+								<div class="form-group">
+									<label for="email">your email or other contact</label>
+									<input type="text" id="email" name="email" placeholder="you@example.com" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="subject">Subject</label>
+								<input type="text" id="subject" name="subject" placeholder="Brief summary of your project or request" required="" />
+							</div>
+							<div class="form-group">
+								<label for="message">Message</label>
+								<textarea id="message" name="message" placeholder="Full description of your project or idea, any questions, and any extra details" required=""></textarea>
+							</div>
+							<button type="submit" class="btn-submit">Send Message</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER -->
+		<footer class="footer">
+			<div class="container footer-inner">
+				<span class="footer-name">spoxle</span>
+				<p class="footer-copy">© <span class="copyright-year">2026</span> spoxle. personal website — all content belongs to its creator.</p>
+			</div>
+		</footer>
+
+		<!-- VIDEO MODAL -->
+		<div class="modal-overlay" id="videoModal">
+			<div class="modal-container">
+				<button class="modal-close" id="modalClose" aria-label="Close">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+				<button class="modal-nav modal-prev" id="modalPrev" aria-label="Previous project">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+				</button>
+				<div class="modal-content">
+					<div class="modal-video-wrap">
+						<video id="modalVideo" controls="controls" loop="">
+							<source src="" type="video/mp4" />
+						</video>
+						<div class="modal-no-video" id="modalNoVideo">
+							<img id="modalFallbackImg" src="" alt="Project Preview" />
+						</div>
+					</div>
+					<div class="modal-info">
+						<h3 id="modalTitle"></h3>
+						<p id="modalDesc"></p>
+					</div>
+				</div>
+				<button class="modal-nav modal-next" id="modalNext" aria-label="Next project">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+				</button>
+			</div>
+		</div>
 	</body>
 </html>
