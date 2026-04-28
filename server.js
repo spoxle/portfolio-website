@@ -30,13 +30,11 @@ const transporter = nodemailer.createTransport({
 app.post("/send", (req, res) => {
 	const { name, email, subject, message } = req.body;
 
-	console.log(req);
-
 	const mailOptions = {
 		from: email,
 		to: process.env.NODEMAILER_EMAIL,
-		subject: `PORTFOLIO CONTACT: ${name} — ${subject}`,
-		text: message,
+		subject: `PORTFOLIO CONTACT: ${subject}`,
+		text: `Name: ${name}\nContact: ${email}\nMessage: ${message}`,
 	};
 
 	transporter.sendMail(mailOptions, (error, info) => {
