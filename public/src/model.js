@@ -5,7 +5,7 @@ function updateModelView() {
 	const modelCenter = modelViewer.offsetTop + modelViewer.offsetHeight / 2;
 	const ratio = scrollY / modelCenter;
 
-	modelViewer.cameraOrbit = `${-ratio * 135 + 30}deg ${ratio * 30 + 60}deg 100m`;
+	modelViewer.cameraOrbit = `${-ratio * 135 + 30}deg ${ratio * 30 + 60}deg`;
 }
 
 window.addEventListener("scroll", updateModelView);

@@ -165,7 +165,7 @@ export function initEffects() {
 
 	const eyebrow = document.querySelector(".eyebrow");
 	const skillsContainer = document.querySelector(".about-skills");
-	const skills = ["Scripting", "UI Integration", "Dev Operations"];
+	const skills = ["Scripting", "UI Integration", "Developer Operations", "Client-Server"];
 	let i = 0;
 
 	setInterval(() => {

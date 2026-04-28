@@ -256,7 +256,7 @@ button {
 /* MODEL VIEWER */
 .hero-model {
 	width: 100%;
-	height: 40vmax;
+	height: 35vmax;
 }
 
 /* SCROLL HINT */
@@ -533,6 +533,7 @@ button {
 
 .about-skills {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 12px;
 }
 
@@ -755,18 +756,6 @@ button {
 #formStatus p {
 	font-size: 13px;
 	margin-top: 4px;
-}
-
-/* testimonials */
-
-.testimonail-media {
-	display: flex;
-	gap: 16px;
-}
-
-.testimonail-media img {
-	aspect-ratio: 1;
-	object-fit: contain;
 }
 
 /* ===========================

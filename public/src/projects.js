@@ -46,7 +46,6 @@ async function initRobloxProjects(config) {
 			<div class="card-body">
 				<h3 class="card-title">${detail.name}</h3>
 				<p class="card-desc">${detail.description || "No description available"}</p>
-				<p class="card-desc">Created: ${new Date(detail.created).toLocaleDateString()}</p>
 				<div class="card-links">
 					<a href="https://roblox.com${detail.canonicalUrlPath}" class="card-link card-link-primary" target="_blank" rel="noopener">
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
