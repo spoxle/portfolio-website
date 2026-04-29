@@ -2,5 +2,9 @@
 	"roblox": {
 		"header": "Roblox Projects",
 		"projects": [5950225780, 5602209089, 9980615055, 5327557585, 6335753444]
+	},
+	"studio": {
+		"header": "Studio Developer Tools",
+		"projects": [{}]
 	}
 }

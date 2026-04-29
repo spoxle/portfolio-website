@@ -16,6 +16,45 @@ function createProjectSection(header, i) {
 	return projectsSectionContainer;
 }
 
+let i = 0;
+
+function createProjectCard(section, thumbnail, name, description, links) {
+	const linkElements = [];
+	for (const link of links) {
+		console.log(link);
+		if (link === null) continue;
+
+		const attributesString = Object.entries(link.attributes)
+			.map(([key, value]) => `${key}="${value}"`)
+			.join(" ");
+
+		linkElements.push(`<a ${attributesString} target="_blank" rel="noopener">${link.svg}${link.text}</a>`);
+	}
+	console.log(linkElements);
+
+	const projectElement = document.createElement("div");
+	projectElement.classList = "project-card fade-in visible";
+	projectElement.dataset.video = true;
+	projectElement.dataset.index = i;
+	projectElement.innerHTML = `
+		<div class="card-media">
+			<div class="card-thumbnail">
+				<img src="${thumbnail}" alt="Project Thumbnail" class="thumb-img" />
+				<video class="thumb-video" loop="" muted="muted" playsinline="">
+					<source src="./projects/roblox/${name}.webm" type="video/webm" />
+				</video>
+			</div>
+		</div>
+		<div class="card-body">
+			<h3 class="card-title">${name}</h3>
+			<p class="card-desc">${description || "No description available"}</p>
+			<div class="card-links">${linkElements.join("")}</div>
+		</div>
+	`;
+	section.appendChild(projectElement);
+	i++;
+}
+
 // roblox projects
 
 async function initRobloxProjects(config) {
@@ -28,50 +67,33 @@ async function initRobloxProjects(config) {
 		const thumbnail = data.thumbnails[i];
 		const cdn = data.cdns[i];
 
-		const download = detail.copyingAllowed ? `/roblox/download?cdn=${encodeURIComponent(cdn)}&name=${detail.name}` : false;
+		const links = [
+			{
+				text: "Roblox Page",
+				attributes: {
+					href: `https://roblox.com${detail.canonicalUrlPath}`,
+					class: "card-link card-link-primary",
+				},
+				svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="12" cy="12" r="10"></circle>
+					<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+				</svg>`,
+			},
+			detail.copyingAllowed && {
+				text: "Download .rbxl",
+				attributes: {
+					href: `/roblox/download?cdn=${encodeURIComponent(cdn)}&name=${detail.name}`,
+					class: "card-link card-link-ghost",
+				},
+				svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+					<polyline points="7 10 12 15 17 10"></polyline>
+					<line x1="12" y1="15" x2="12" y2="3"></line>
+				</svg>`,
+			},
+		].filter(Boolean);
 
-		const projectElement = document.createElement("div");
-		projectElement.classList = "project-card fade-in visible";
-		projectElement.dataset.video = true;
-		projectElement.dataset.index = i;
-		projectElement.innerHTML = `
-			<div class="card-media">
-				<div class="card-thumbnail">
-					<img src="${thumbnail}" alt="Project Thumbnail" class="thumb-img" />
-					<video class="thumb-video" loop="" muted="muted" playsinline="">
-						<source src="./projects/roblox/${detail.name}.webm" type="video/webm" />
-					</video>
-				</div>
-			</div>
-			<div class="card-body">
-				<h3 class="card-title">${detail.name}</h3>
-				<p class="card-desc">${detail.description || "No description available"}</p>
-				<div class="card-links">
-					<a href="https://roblox.com${detail.canonicalUrlPath}" class="card-link card-link-primary" target="_blank" rel="noopener">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<circle cx="12" cy="12" r="10"></circle>
-							<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-						</svg>
-						Roblox Page
-					</a>
-					${
-						download
-							? `
-					<a href="${download}" class="card-link card-link-ghost" target="_blank" rel="noopener">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-							<polyline points="7 10 12 15 17 10"></polyline>
-							<line x1="12" y1="15" x2="12" y2="3"></line>
-						</svg>
-						Download .rbxl
-					</a>
-					`
-							: ""
-					}
-				</div>
-			</div>
-		`;
-		section.appendChild(projectElement);
+		createProjectCard(section, thumbnail, detail.name, detail.description, links);
 	}
 }
 
@@ -91,4 +113,5 @@ export async function initProjects() {
 	projectsContainer.innerText = "";
 
 	await initRobloxProjects(config.roblox);
+	// await initStudioTools(config.studio);
 }

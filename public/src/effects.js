@@ -165,14 +165,14 @@ export function initEffects() {
 
 	const eyebrow = document.querySelector(".eyebrow");
 	const skillsContainer = document.querySelector(".about-skills");
-	const skills = ["Scripting", "UI Integration", "Developer Operations", "Client-Server"];
+	const skills = ["Weapon Frameworks", "UI Programming", "Placement Systems", "Client-Server Security", "Physics ", "Custom Developer Plugins"];
 	let i = 0;
 
 	setInterval(() => {
 		i++;
 		if (i == skills.length) i = 0;
 
-		eyebrow.textContent = `Developer - ${skills[i]}`;
+		eyebrow.textContent = skills[i];
 	}, 1000);
 
 	skillsContainer.innerHTML = "";
