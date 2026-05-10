@@ -14,7 +14,17 @@ app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT;
 
 const server = app.listen(PORT, "0.0.0.0", () => {
-	console.log(`express app now running on http://localhost:${PORT}`);
+	console.log(`express app now running on 0.0.0.0:${PORT}`);
+});
+
+// Test endpoint at the root path
+app.get("/", (req, res) => {
+	res.status(200).json({
+		status: "success",
+		message: "Express server is accessible",
+		timestamp: new Date().toISOString(),
+		container_ip: req.ip,
+	});
 });
 
 // email
