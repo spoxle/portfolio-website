@@ -1,2 +1,5 @@
+[phases.build]
+cmds = ["npm ci"]
+
 [start]
-cmd = "node server.js"
+cmd = "HOST=0.0.0.0 node server.js"
