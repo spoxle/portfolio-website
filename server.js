@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT;
 
-const server = app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, "0.0.0.0", () => {
 	console.log(`express app now running on 0.0.0.0:${PORT}`);
 });
 
@@ -60,7 +60,8 @@ app.post("/send", (req, res) => {
 // roblox api endpoints
 
 const DETAILS_API = "https://games.roblox.com/v1/games?universeIds=";
-const THUMBNAILS_API = "https://thumbnails.roblox.com/v1/games/multiget/thumbnails?format=Webp&size=768x432&universeIds=";
+const THUMBNAILS_API =
+	"https://thumbnails.roblox.com/v1/games/multiget/thumbnails?format=Webp&size=768x432&universeIds=";
 const ASSETS_API = "https://apis.roblox.com/asset-delivery-api/v1/assetId/";
 
 app.get("/roblox/download", async (req, res) => {
@@ -77,22 +78,22 @@ app.get("/roblox/download", async (req, res) => {
 
 app.get("/roblox/info", async (req, res) => {
 	const details = await fetch(DETAILS_API + req.query.ids)
-		.then(response => response.json())
-		.then(data => data.data);
+		.then((response) => response.json())
+		.then((data) => data.data);
 
 	const thumbnails = await fetch(THUMBNAILS_API + req.query.ids)
-		.then(response => response.json())
-		.then(data => data.data.map(id => id.thumbnails[0].imageUrl));
+		.then((response) => response.json())
+		.then((data) => data.data.map((id) => id.thumbnails[0].imageUrl));
 
 	const cdns = await Promise.all(
-		details.map(async experience => {
+		details.map(async (experience) => {
 			return fetch(ASSETS_API + experience.rootPlaceId, {
 				headers: {
 					"x-api-key": process.env.ROBLOX_API_KEY,
 				},
 			})
-				.then(response => response.json())
-				.then(data => data.location);
+				.then((response) => response.json())
+				.then((data) => data.location);
 			``;
 		}),
 	);
